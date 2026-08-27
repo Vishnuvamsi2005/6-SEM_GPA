@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6th Semester GPA Calculator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎓 GPA Calculator</h1>
+            <p>6th Semester</p>
+        </div>
+
+        <div class="student-details">
+            <label for="name">Student Name</label>
+            <input type="text" id="name" placeholder="Enter your name">
+            <p class="developer">
+                Developed by G. Vishnu Vamsi<br>
+                Reg No: 231211101302
+            </p>
+        </div>
+
+        <div class="subjects">
+            <h2>Enter Your Grades</h2>
+
+            {% for subject, credits in subjects.items() %}
+            <div class="subject">
+                <div class="subject-name">{{ subject }}</div>
+                <div class="credit">{{ credits }} Credit{% if credits > 1 %}s{% endif %}</div>
+                <select class="grade" data-subject="{{ subject }}">
+                    <option value="">Select Grade</option>
+                    <option value="H">H</option>
+                    <option value="S">S</option>
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="F">F</option>
+                </select>
+            </div>
+            {% endfor %}
+        </div>
+
+        <button id="calculateBtn">Calculate GPA</button>
+
+        <div id="result" class="result hidden">
+            <h2>🎉 GPA Result</h2>
+            <p id="message"></p>
+            <div class="gpa"><span id="gpaValue">0.00</span></div>
+            <p>6th Semester GPA</p>
+        </div>
+
+        <button id="resetBtn" class="reset">Reset</button>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

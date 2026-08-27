@@ -1,0 +1,144 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f2f5f9;
+    padding: 30px 15px;
+}
+
+.container {
+    max-width: 850px;
+    margin: auto;
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.header h1 {
+    font-size: 32px;
+    margin-bottom: 8px;
+}
+
+.header p {
+    color: #666;
+    font-size: 18px;
+}
+
+.student-details {
+    margin-bottom: 25px;
+}
+
+.student-details label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.student-details input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.developer {
+    text-align: center;
+    margin-top: 15px;
+    color: #777;
+    font-size: 13px;
+}
+
+.subjects h2 {
+    margin-bottom: 15px;
+}
+
+.subject {
+    display: grid;
+    grid-template-columns: 1fr 100px 130px;
+    align-items: center;
+    gap: 10px;
+    padding: 14px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.credit {
+    color: #666;
+    font-size: 14px;
+}
+
+.grade {
+    padding: 9px;
+    border-radius: 6px;
+    border: 1px solid #bbb;
+    font-size: 15px;
+}
+
+button {
+    width: 100%;
+    margin-top: 20px;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    background: #2563eb;
+    color: white;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+.result {
+    text-align: center;
+    margin-top: 25px;
+    padding: 25px;
+    border-radius: 12px;
+    background: #f0fdf4;
+}
+
+.gpa {
+    font-size: 50px;
+    font-weight: bold;
+    margin: 15px;
+}
+
+.hidden {
+    display: none;
+}
+
+.reset {
+    background: #555;
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 20px 15px;
+    }
+
+    .subject {
+        grid-template-columns: 1fr;
+    }
+
+    .grade {
+        width: 100%;
+    }
+
+    .header h1 {
+        font-size: 26px;
+    }
+}
