@@ -1,59 +1,168 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>6th Semester GPA Calculator</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <meta
+        name="description"
+        content="Calculate your sixth semester GPA and download a student-generated grade report PDF."
+    >
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
 </head>
+
 <body>
-    <div class="container">
-        <div class="header">
+    <main class="container">
+
+        <!-- Page Header -->
+        <header class="header">
             <h1>🎓 GPA Calculator</h1>
-            <p>6th Semester</p>
-        </div>
+            <p>6th Semester Grade Calculator</p>
+            <p>Calculate your semester GPA and download your report.</p>
+        </header>
 
-        <div class="student-details">
-            <label for="name">Student Name</label>
-            <input type="text" id="name" placeholder="Enter your name">
-            <p class="developer">
-                Developed by G. Vishnu Vamsi<br>
-                Reg No: 231211101302
-            </p>
-        </div>
+        <!-- Student Details -->
+        <section class="student-details">
+            <h2>Student Details</h2>
 
-        <div class="subjects">
+            <label for="name">Student Name *</label>
+            <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Enter your full name"
+                maxlength="100"
+                autocomplete="name"
+                required
+            >
+
+            <label for="registerNo">Register Number (Optional)</label>
+            <input
+                type="text"
+                id="registerNo"
+                name="registerNo"
+                placeholder="Enter your register number"
+                maxlength="30"
+                autocomplete="off"
+            >
+        </section>
+
+        <!-- Grade Selection -->
+        <section class="subjects">
             <h2>Enter Your Grades</h2>
+
+            <p class="grade-info">
+                Select the grade you received for each subject.
+                All subjects are required.
+            </p>
+
+            <div class="grade-scale">
+                <strong>Grade Point Scale</strong>
+                <p>H = 10 | S = 9 | A = 8 | B = 7 | C = 6 | F = 0</p>
+            </div>
 
             {% for subject, credits in subjects.items() %}
             <div class="subject">
-                <div class="subject-name">{{ subject }}</div>
-                <div class="credit">{{ credits }} Credit{% if credits > 1 %}s{% endif %}</div>
-                <select class="grade" data-subject="{{ subject }}">
+
+                <div class="subject-name">
+                    {{ subject }}
+                </div>
+
+                <div class="credit">
+                    {{ credits }}
+                    {% if credits > 1 %}
+                        Credits
+                    {% else %}
+                        Credit
+                    {% endif %}
+                </div>
+
+                <select
+                    class="grade"
+                    data-subject="{{ subject }}"
+                    aria-label="Select grade for {{ subject }}"
+                    required
+                >
                     <option value="">Select Grade</option>
-                    <option value="H">H</option>
-                    <option value="S">S</option>
-                    <option value="A">A</option>
-                    <option value="B">B</option>
-                    <option value="C">C</option>
-                    <option value="F">F</option>
+                    <option value="H">H - 10 Points</option>
+                    <option value="S">S - 9 Points</option>
+                    <option value="A">A - 8 Points</option>
+                    <option value="B">B - 7 Points</option>
+                    <option value="C">C - 6 Points</option>
+                    <option value="F">F - 0 Points</option>
                 </select>
+
             </div>
             {% endfor %}
+
+            <p class="total-credits">
+                Total Semester Credits:
+                <strong>{{ subjects.values() | sum }}</strong>
+            </p>
+        </section>
+
+        <!-- Action Buttons -->
+        <div class="actions">
+            <button id="calculateBtn" type="button">
+                Calculate GPA
+            </button>
+
+            <button
+                id="downloadBtn"
+                class="download hidden"
+                type="button"
+            >
+                Download PDF Report
+            </button>
+
+            <button
+                id="resetBtn"
+                class="reset"
+                type="button"
+            >
+                Reset
+            </button>
         </div>
 
-        <button id="calculateBtn">Calculate GPA</button>
+        <!-- GPA Result -->
+        <section
+            id="result"
+            class="result hidden"
+            aria-live="polite"
+        >
+            <h2>🎉 Semester Result</h2>
 
-        <div id="result" class="result hidden">
-            <h2>🎉 GPA Result</h2>
             <p id="message"></p>
-            <div class="gpa"><span id="gpaValue">0.00</span></div>
+
+            <div class="gpa">
+                <span id="gpaValue">0.00</span>
+                <span class="gpa-out-of">/ 10.00</span>
+            </div>
+
             <p>6th Semester GPA</p>
-        </div>
 
-        <button id="resetBtn" class="reset">Reset</button>
-    </div>
+            <p class="report-note">
+                Your semester report is ready to download.
+            </p>
+        </section>
 
+        <!-- Footer -->
+        <footer class="footer">
+            <p>6th Semester GPA Calculator</p>
+            <p>For student reference and academic planning.</p>
+        </footer>
+
+    </main>
+
+    <!-- JavaScript -->
     <script src="{{ url_for('static', filename='script.js') }}"></script>
+
 </body>
 </html>
