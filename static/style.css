@@ -378,3 +378,20 @@ button.reset:hover {
         display: none;
     }
 }
+
+/* Developer Details */
+
+.developer {
+    text-align: center;
+    padding: 12px;
+    margin: 0 0 24px;
+    background: #eff6ff;
+    border: 1px solid #dbeafe;
+    border-radius: 8px;
+    color: #17365d;
+    font-size: 13px;
+}
+
+.developer p {
+    margin: 2px 0;
+}
