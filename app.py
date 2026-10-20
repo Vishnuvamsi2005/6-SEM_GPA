@@ -57,6 +57,12 @@ def validate_student_data():
 
     if not name:
         return None, "Please enter the student's name."
+    
+    if not register_no:
+        return None, "Please enter the student's register number."
+
+    if len(register_no) > 30:
+        return None, "Register number must be 30 characters or fewer."
 
     if not isinstance(grades, dict):
         return None, "Invalid grade data."
