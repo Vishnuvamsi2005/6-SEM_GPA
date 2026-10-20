@@ -1,144 +1,380 @@
+
+/* ==============================
+   GLOBAL STYLES
+============================== */
+
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background: #f2f5f9;
-    padding: 30px 15px;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f1f5f9;
+    color: #1e293b;
+    line-height: 1.6;
+    padding: 24px 14px;
 }
 
 .container {
+    width: 100%;
     max-width: 850px;
-    margin: auto;
-    background: white;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 28px;
+    box-shadow: 0 8px 30px rgba(15, 23, 42, 0.09);
 }
+
+/* ==============================
+   HEADER
+============================== */
 
 .header {
     text-align: center;
-    margin-bottom: 25px;
+    background: #17365d;
+    color: #ffffff;
+    margin: -28px -28px 28px;
+    padding: 28px 20px;
+    border-radius: 16px 16px 0 0;
 }
 
 .header h1 {
-    font-size: 32px;
-    margin-bottom: 8px;
+    font-size: 30px;
+    margin-bottom: 6px;
 }
 
 .header p {
-    color: #666;
-    font-size: 18px;
+    font-size: 14px;
+    color: #e2e8f0;
 }
 
-.student-details {
-    margin-bottom: 25px;
+/* ==============================
+   SECTION HEADINGS
+============================== */
+
+.student-details,
+.subjects {
+    margin-bottom: 28px;
 }
+
+.student-details h2,
+.subjects h2,
+.result h2 {
+    color: #17365d;
+    font-size: 21px;
+    margin-bottom: 16px;
+}
+
+/* ==============================
+   STUDENT DETAILS
+============================== */
 
 .student-details label {
     display: block;
-    font-weight: bold;
-    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    margin: 14px 0 6px;
 }
 
 .student-details input {
     width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
+    padding: 12px 14px;
+    border: 1px solid #cbd5e1;
     border-radius: 8px;
-    font-size: 16px;
+    font-size: 15px;
+    background: #ffffff;
+    color: #1e293b;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
 }
 
-.developer {
-    text-align: center;
-    margin-top: 15px;
-    color: #777;
-    font-size: 13px;
+.student-details input:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
 }
 
-.subjects h2 {
-    margin-bottom: 15px;
+/* ==============================
+   GRADE INFORMATION
+============================== */
+
+.grade-info {
+    color: #64748b;
+    font-size: 14px;
+    margin-bottom: 14px;
 }
 
-.subject {
-    display: grid;
-    grid-template-columns: 1fr 100px 130px;
-    align-items: center;
-    gap: 10px;
-    padding: 14px;
-    margin-bottom: 10px;
-    border: 1px solid #ddd;
+.grade-scale {
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
     border-radius: 8px;
+    padding: 13px;
+    margin-bottom: 18px;
+    color: #1e40af;
 }
 
-.credit {
-    color: #666;
+.grade-scale strong {
+    display: block;
+    margin-bottom: 4px;
+}
+
+.grade-scale p {
     font-size: 14px;
 }
 
+/* ==============================
+   SUBJECT ROWS
+============================== */
+
+.subject {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 85px 170px;
+    align-items: center;
+    gap: 14px;
+    padding: 15px 12px;
+    border-bottom: 1px solid #e2e8f0;
+    transition: background 0.2s;
+}
+
+.subject:hover {
+    background: #f8fafc;
+}
+
+.subject-name {
+    font-size: 14px;
+    font-weight: 600;
+    overflow-wrap: anywhere;
+}
+
+.credit {
+    color: #64748b;
+    font-size: 13px;
+    text-align: center;
+}
+
 .grade {
-    padding: 9px;
-    border-radius: 6px;
-    border: 1px solid #bbb;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #cbd5e1;
+    border-radius: 7px;
+    background: #ffffff;
+    color: #1e293b;
+    font-size: 14px;
+    cursor: pointer;
+    outline: none;
+}
+
+.grade:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+.total-credits {
+    margin-top: 18px;
+    text-align: right;
     font-size: 15px;
+    color: #334155;
+}
+
+/* ==============================
+   BUTTONS
+============================== */
+
+.actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 24px 0;
 }
 
 button {
-    width: 100%;
-    margin-top: 20px;
-    padding: 14px;
+    flex: 1;
+    min-width: 150px;
     border: none;
     border-radius: 8px;
-    font-size: 17px;
-    font-weight: bold;
-    cursor: pointer;
+    padding: 13px 18px;
+    font-size: 15px;
+    font-weight: 700;
+    color: #ffffff;
     background: #2563eb;
-    color: white;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
 }
 
 button:hover {
-    opacity: 0.9;
+    background: #1d4ed8;
+    transform: translateY(-1px);
 }
+
+button:focus-visible {
+    outline: 3px solid #93c5fd;
+    outline-offset: 3px;
+}
+
+button:disabled {
+    opacity: 0.65;
+    cursor: wait;
+    transform: none;
+}
+
+button.download {
+    background: #15803d;
+}
+
+button.download:hover {
+    background: #166534;
+}
+
+button.reset {
+    background: #64748b;
+}
+
+button.reset:hover {
+    background: #475569;
+}
+
+/* ==============================
+   GPA RESULT
+============================== */
 
 .result {
     text-align: center;
-    margin-top: 25px;
-    padding: 25px;
+    padding: 25px 18px;
+    margin: 24px 0;
+    border: 1px solid #bbf7d0;
     border-radius: 12px;
     background: #f0fdf4;
 }
 
-.gpa {
-    font-size: 50px;
-    font-weight: bold;
-    margin: 15px;
+.result h2 {
+    color: #166534;
 }
+
+#message {
+    color: #475569;
+    margin-bottom: 8px;
+}
+
+.gpa {
+    color: #15803d;
+    font-size: 48px;
+    font-weight: 800;
+    line-height: 1.3;
+    margin: 8px 0;
+}
+
+.gpa-out-of {
+    font-size: 18px;
+    font-weight: 500;
+    color: #64748b;
+}
+
+.report-note {
+    font-size: 13px;
+    color: #475569;
+    margin-top: 10px;
+}
+
+/* ==============================
+   UTILITIES
+============================== */
 
 .hidden {
-    display: none;
+    display: none !important;
 }
 
-.reset {
-    background: #555;
+/* ==============================
+   FOOTER
+============================== */
+
+.footer {
+    text-align: center;
+    border-top: 1px solid #e2e8f0;
+    padding-top: 18px;
+    margin-top: 28px;
+    color: #64748b;
+    font-size: 12px;
 }
+
+/* ==============================
+   MOBILE RESPONSIVE DESIGN
+============================== */
 
 @media (max-width: 600px) {
+    body {
+        padding: 12px 8px;
+    }
+
     .container {
-        padding: 20px 15px;
+        padding: 18px;
+        border-radius: 12px;
     }
 
-    .subject {
-        grid-template-columns: 1fr;
-    }
-
-    .grade {
-        width: 100%;
+    .header {
+        margin: -18px -18px 22px;
+        padding: 24px 14px;
+        border-radius: 12px 12px 0 0;
     }
 
     .header h1 {
-        font-size: 26px;
+        font-size: 24px;
+    }
+
+    .student-details h2,
+    .subjects h2,
+    .result h2 {
+        font-size: 19px;
+    }
+
+    .subject {
+        grid-template-columns: minmax(0, 1fr) 75px;
+        gap: 8px;
+        padding: 14px 4px;
+    }
+
+    .subject-name {
+        font-size: 13px;
+    }
+
+    .credit {
+        font-size: 12px;
+    }
+
+    .grade {
+        grid-column: 1 / -1;
+        padding: 12px;
+    }
+
+    .actions {
+        flex-direction: column;
+    }
+
+    button {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .gpa {
+        font-size: 40px;
+    }
+
+    .grade-scale p {
+        font-size: 12px;
+    }
+}
+
+@media print {
+    body {
+        background: #ffffff;
+        padding: 0;
+    }
+
+    .container {
+        box-shadow: none;
+    }
+
+    .actions {
+        display: none;
     }
 }
