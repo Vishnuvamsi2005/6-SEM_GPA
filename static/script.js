@@ -36,6 +36,12 @@ function collectFormData() {
         nameInput.focus();
         return null;
     }
+    
+    if (!registerNo) {
+        alert("Please enter the student's register number.");
+        registerInput.focus();
+        return null;
+    }
 
     const gradeElements = document.querySelectorAll(".grade");
 
