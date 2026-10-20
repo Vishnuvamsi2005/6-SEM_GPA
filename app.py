@@ -132,9 +132,17 @@ def draw_footer(canvas, doc):
 
     canvas.setFont("Helvetica", 8)
     canvas.setFillColor(colors.HexColor("#64748B"))
-    canvas.drawString(
-        18 * mm, 10 * mm,
-        "Unofficial student-generated report"
+    
+canvas.drawString(
+    18 * mm, 18 * mm,
+    "Developed by G. Vishnu Vamsi | Reg No: 231211101302"
+)
+
+canvas.drawString(
+    18 * mm, 10 * mm,
+    " Student-generated report"
+)
+
     )
     canvas.drawRightString(
         page_width - 18 * mm, 10 * mm,
